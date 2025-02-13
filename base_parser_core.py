@@ -9,6 +9,10 @@ class findreq_type(TypedDict):
 
 
 class SiteParser(HTMLParser):
+    def __init__(self, *, convert_charrefs: bool = True) -> None:
+        self.task = []
+
+        super().__init__(convert_charrefs=convert_charrefs)
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         return super().handle_starttag(tag, attrs)
     
@@ -19,4 +23,5 @@ class SiteParser(HTMLParser):
         return super().handle_data(data)
     
     def presetting_find(self, findreq: findreq_type):
-        pass
+        self.task.append(findreq)
+
