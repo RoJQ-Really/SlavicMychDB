@@ -1,7 +1,7 @@
 from html.parser import HTMLParser
 from typing import TypedDict
 
-class findreq(TypedDict):
+class findreq_type(TypedDict):
     classname: str|None
     dataformat: str|None
     attrs_need: list|None
@@ -18,5 +18,5 @@ class SiteParser(HTMLParser):
     def handle_data(self, data: str) -> None:
         return super().handle_data(data)
     
-    def presetting_find(self, findreq):
+    def presetting_find(self, findreq: findreq_type):
         pass
